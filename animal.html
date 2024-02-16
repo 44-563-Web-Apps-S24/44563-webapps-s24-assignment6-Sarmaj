@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Animal Game by SARVANI MAJJI</title>
+    </head>
+    <body>
+        <header>
+            <h1>Animal Game by SARVANI MAJJI</h1>
+        </header>
+        <form>
+            <label for="form1_hidden_animal">The hidden animal type</label>
+            <input type ="password" id="form1_hidden_animal" name="form1_hidden_animal" value="Chicken"> <br>
+            <label for="form1_guess_animal">Guess the animal</label>
+            <input type ="text" id="form1_guess_animal" name="form1_guess_animal" autofocus> <br>
+        
+            <input type="button" onclick=" checkAnimal()" value="Check the guess">
+        </form>
+        
+        
+        <p id="result">Result will be displayed here</p>
+        
+        <script> 
+        let wrong = 0
+        let correct = 0
+        
+        function checkAnimal (){
+            console.log("Getting form values")
+            hidden = document.getElementById("form1_hidden_animal").value
+            guess = document.getElementById("form1_guess_animal").value   
+            out = document.getElementById("result")
+            if(hidden === guess){
+                alert("Ruff ruff")
+                out.innerHTML = "Correct: "+correct++
+            } else {
+                alert("Grrrr")
+                out.innerHTML = "Wrong: "+wrong++
+            }
+        }
+        </script>
+</body>
+</html> 
