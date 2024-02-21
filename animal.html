@@ -1,66 +1,66 @@
 <!DOCTYPE html>
 <html>
- <head>
-    <title>Predict the Animal Game</title>
- </head>
+<head>
+    <title>Webapps-Assignment06</title>
+</head>
 <body>
+    <h1>Animal game by SARVANI MAJJI</h1>
+    <h2>Getting input</h2>
 
-<h2>Animal Game by MAJJI SAI TEJA SARVANI</h2>
-<main>
-    <form>
-        <label for="hiddenAnimal">The hidden animal type</label>
-        <input type="password" id="hiddenAnimal" value="Chicken">
-        <br>
-        <label for="guessAnimal">Guess the animal</label>
-        <input type="text" id="guessAnimal">
-        <br>
+    <form id="animalForm">
+        <label for="hidden-animal">The hidden animal type:</label>
+        <input type="password" id="hidden-animal" value="Chicken"><br>
+        <label for="guess-animal">Guess the animal:</label>
+        <input type="text" id="guess-animal"> <br>
         <button type="button" onclick="checkAnimal()">Check the guess</button>
     </form>
-    <div id="result"></div>
-</main>
+    <p id="result"></p>
 
-<script>
-    let wrong = 0;
-    let correct = 0;
+    <div id="imageContainer">
+        <img src="drink 1.jpg" alt="Drink 1" width="150" height="150" onclick="selectImage()">
+    </div>
 
-    function checkAnimal() {
-        const hiddenAnimal = document.getElementById('hiddenAnimal').value;
-        const guessAnimal = document.getElementById('guessAnimal').value;
+    <script>
+        let correct = 0;
+        let wrong = 0;
+        let useImage = 1;
+        
+        function checkAnimal() {
+            const hiddenAnimal = document.getElementById('hidden-animal').value;
+            const guessedAnimal = document.getElementById('guess-animal').value;
 
-        if (hiddenAnimal.toLowerCase() === guessAnimal.toLowerCase()) {
-            correct++;
-            alert('Ruff ruff');
-        } else {
-            wrong++;
-            alert('Grrrr');
+            if (hiddenAnimal.toLowerCase() === guessedAnimal.toLowerCase()) {
+                correct++;
+                alert("Ruff ruff");
+            } else {
+                wrong++;
+                alert("Grrrr");
+            }
+            document.getElementById('result').innerHTML = `<p>Correct guesses: ${correct}</p><p>Wrong guesses: ${wrong}</p>`;
+            // Bonus
+            if (wrong > correct) {
+                document.getElementById('animalForm').onclick = function() {
+                    alert('Sorry, too many wrong guesses.');
+                };
+            }
         }
 
-        document.getElementById('result').innerHTML = `Correct: ${correct}, Wrong: ${wrong}`;
-    }
-</script>
-<div id="imagecontainer" onclick="selectImage()">
-   <img id="drinkImage" src="drink 1.jpg" alt="Drink Image" width="150" height="150">
-</div>
-
-<script>
-    let useImage = 1;
-    function selectImage() {
-        switch (useImage) {
-            case 1:
-                document.getElementById('drinkImage').src = 'drink 1.jpg';
-                useImage = 2;
-                break;
-            case 2:
-                document.getElementById('drinkImage').src = 'drink 2.jpg';
-                useImage = 3;
-                break;
-            case 3:
-                document.getElementById('drinkImage').src = 'drink 3.jpg';
-                useImage = 1;
-                break;
+        function selectImage() {
+            switch (useImage) {
+                case 1:
+                    document.getElementById("drinkImage").innerHTML = '<img src="drink 1.jpg" alt="Drink 2" width="150" height="150" onclick="selectImage()">';
+                    useImage = 2;
+                    break;
+                case 2:
+                    document.getElementById("drinkImage").innerHTML = '<img src="drink 2.jpg" alt="Drink 3" width="150" height="150" onclick="selectImage()">';
+                    useImage = 3;
+                    break;
+                case 3:
+                    document.getElementById("drinkImage").innerHTML = '<img src="drink 3.jpg" alt="Drink 1" width="150" height="150" onclick="selectImage()">';
+                    useImage = 1;
+                    break;
+            }
         }
-    }
-</script>
-
+    </script>
 </body>
-</html> 
+</html>
