@@ -1,42 +1,66 @@
 <!DOCTYPE html>
 <html>
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Animal Game by SARVANI MAJJI</title>
-    </head>
-    <body>
-        <header>
-            <h1>Animal Game by SARVANI MAJJI</h1>
-        </header>
-        <form>
-            <label for="form1_hidden_animal">The hidden animal type</label>
-            <input type ="password" id="form1_hidden_animal" name="form1_hidden_animal" value="Chicken"> <br>
-            <label for="form1_guess_animal">Guess the animal</label>
-            <input type ="text" id="form1_guess_animal" name="form1_guess_animal" autofocus> <br>
-        
-            <input type="button" onclick=" checkAnimal()" value="Check the guess">
-        </form>
-        
-        
-        <p id="result">Result will be displayed here</p>
-        <script> 
-        let wrong = 0
-        let correct = 0
-        
-        function checkAnimal (){
-            console.log("Getting form values")
-            hidden = document.getElementById("form1_hidden_animal").value
-            guess = document.getElementById("form1_guess_animal").value   
-            out = document.getElementById("result")
-            if(hidden === guess){
-                alert("Ruff ruff")
-                out.innerHTML = "Correct: "+correct++
-            } else {
-                alert("Grrrr")
-                out.innerHTML = "Wrong: "+wrong++
-            }
+ <head>
+    <title>Predict the Animal Game</title>
+ </head>
+<body>
+
+<h2>Animal Game by Kalyan Chakravarthy Jogula</h2>
+<main>
+    <form>
+        <label for="hiddenAnimal">The hidden animal type</label>
+        <input type="password" id="hiddenAnimal" value="Chicken">
+        <br>
+        <label for="guessAnimal">Guess the animal</label>
+        <input type="text" id="guessAnimal">
+        <br>
+        <button type="button" onclick="checkAnimal()">Check the guess</button>
+    </form>
+    <div id="result"></div>
+</main>
+
+<script>
+    let wrong = 0;
+    let correct = 0;
+
+    function checkAnimal() {
+        const hiddenAnimal = document.getElementById('hiddenAnimal').value;
+        const guessAnimal = document.getElementById('guessAnimal').value;
+
+        if (hiddenAnimal.toLowerCase() === guessAnimal.toLowerCase()) {
+            correct++;
+            alert('Ruff ruff');
+        } else {
+            wrong++;
+            alert('Grrrr');
         }
+
+        document.getElementById('result').innerHTML = `Correct: ${correct}, Wrong: ${wrong}`;
+    }
 </script>
+<div id="imagecontainer" onclick="selectImage()">
+   <img id="drinkImage" src="drink 1.jpg" alt="Drink Image" width="150" height="150">
+</div>
+
+<script>
+    let useImage = 1;
+    function selectImage() {
+        switch (useImage) {
+            case 1:
+                document.getElementById('drinkImage').src = 'drink 1.jpg';
+                useImage = 2;
+                break;
+            case 2:
+                document.getElementById('drinkImage').src = 'drink 2.jpg';
+                useImage = 3;
+                break;
+            case 3:
+                document.getElementById('drinkImage').src = 'drink 3.jpg';
+                useImage = 1;
+                break;
+        }
+    }
+</script>
+
 </body>
 </html> 
